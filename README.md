@@ -213,3 +213,15 @@ The path names can be changed in the configuration file. To disable an admin ser
 * View Zipkin info at http://localhost:9411
 
 Details on the Zipkin container are [here](https://github.com/openzipkin/docker-zipkin).
+
+## Building in IntelliJ
+Because this project uses Protobuf, it generates Protobuf stubs in the
+`target/generated-sources` dir. A build plugin has already been added to
+this project's `pom.xml` to make sure that folder is included as part of
+sources, but unfortunately IntelliJ doesn't by default delegate `Build`
+project actions to Maven.
+
+So you have to change your settings in IntelliJ under `Settings` ->
+`Build, Execution, Deployment` -> `Maven` -> `Runner`. Make sure
+`Delegate IDE build/run actions to maven` is checked. Once you do that
+IntelliJ will use your `pom.xml` targets to build the project.
